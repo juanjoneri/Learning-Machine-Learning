@@ -1,7 +1,7 @@
 # Learnign-Machine-Learning #
 ## Based on Standford's [CS231n](http://cs231n.stanford.edu/ "CS231n") ##
 ### *Convolutional Neural Networks for Visual Recognition* ###
-#### Notes O		rder ####
+#### Notes Order ####
 
 - Print Number
 - Nearest Neighbours
