@@ -8,3 +8,5 @@
 	- Find Distance
 	- Nearest Neighbours
 	- Test Nearest Neighbours
+	- Knearest
+- support vector machine
