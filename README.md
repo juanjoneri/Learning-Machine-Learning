@@ -5,9 +5,12 @@
 #### Notes Order ####
 
 - Print Number
+
 - Nearest Neighbours
 	- Find Distance
 	- Nearest Neighbours
 	- Test Nearest Neighbours
 	- Knearest
-- support vector machine
+
+- Linear Regression
+	- DataPeek
