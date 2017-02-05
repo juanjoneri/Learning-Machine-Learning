@@ -4,9 +4,9 @@
 ### *Convolutional Neural Networks for Visual Recognition* ###
 #### Notes Order ####
 
-- Print Number
 
 - Nearest Neighbours
+    - Print Number
 	- Find Distance
 	- Nearest Neighbours
 	- Test Nearest Neighbours
@@ -14,3 +14,10 @@
 
 - Linear Regression
 	- DataPeek
+    - Linear Regression wiht 2 Variables
+    - 2 Variables Linear model, 3D visualization
+    - Matlab 3D visualization
+
+- Gradient Descent
+    - AbalonePeek
+    - Gradient Descent
