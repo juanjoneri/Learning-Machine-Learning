@@ -1,0 +1,304 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     11169,        296]
+NotebookOptionsPosition[     10189,        257]
+NotebookOutlinePosition[     10533,        272]
+CellTagsIndexPosition[     10490,        269]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Visualizing Softmax", "Subsection",
+ CellChangeTimes->{{3.6968719145981536`*^9, 3.6968719180633554`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Softmax", "[", "A__", "]"}], ":=", 
+  RowBox[{"N", "[", 
+   RowBox[{
+    RowBox[{"Exp", "[", "A", "]"}], "/", 
+    RowBox[{"Total", "[", 
+     RowBox[{"Exp", "[", "A", "]"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.696870666264351*^9, 3.6968706776513324`*^9}, {
+  3.696870745581114*^9, 3.6968707599157104`*^9}, {3.696870796794654*^9, 
+  3.696870797206688*^9}, {3.6968708309747877`*^9, 3.696870840125603*^9}, {
+  3.69687088828802*^9, 3.696870922975439*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"b", "=", 
+  RowBox[{"Softmax", "[", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "2", ",", "3"}], "}"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.696870767954132*^9, 3.696870778437416*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.09003057317038046`", ",", "0.2447284710547977`", ",", 
+   "0.665240955774822`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.6968707793268557`*^9, 3.696870798759388*^9}, 
+   3.6968708421953745`*^9, {3.696870912813116*^9, 3.6968709244713106`*^9}, 
+   3.6968779444082394`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Total", "[", "b", "]"}]], "Input",
+ CellChangeTimes->{{3.696870929501872*^9, 3.696870932239722*^9}}],
+
+Cell[BoxData["1.0000000000000002`"], "Output",
+ CellChangeTimes->{
+  3.69687093255214*^9, {3.696877936204988*^9, 3.6968779444192696`*^9}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"SoftmaxN", "[", 
+   RowBox[{"A__", ",", "n_"}], "]"}], ":=", 
+  RowBox[{"N", "[", 
+   RowBox[{
+    RowBox[{"Exp", "[", 
+     RowBox[{"A", "[", 
+      RowBox[{"[", "n", "]"}], "]"}], "]"}], "/", 
+    RowBox[{"Total", "[", 
+     RowBox[{"Exp", "[", "A", "]"}], "]"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.696871009362327*^9, 3.696871046884863*^9}, {
+  3.6968711239394593`*^9, 3.6968711246472855`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"c", "=", 
+  RowBox[{"SoftmaxN", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "2", ",", "3"}], "}"}], ",", "3"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6968710521896067`*^9, 3.6968710701152916`*^9}, {
+  3.6968711332519774`*^9, 3.696871133393897*^9}}],
+
+Cell[BoxData["0.665240955774822`"], "Output",
+ CellChangeTimes->{
+  3.6968710711655307`*^9, {3.696871126207306*^9, 3.6968711343566737`*^9}, 
+   3.696877944438835*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Visualizing Cross-Entropy", "Subsection",
+ CellChangeTimes->{{3.696871925493511*^9, 3.6968719339160805`*^9}}],
+
+Cell["\<\
+\[Minus] \[Sum] y\[CloseCurlyQuote]_i log\:2061(y_i), Where y is our \
+predicted probability distribution using Softmax, and y\[CloseCurlyQuote] is \
+the true distribution {0, 0, 1, 0, 0 ....}\
+\>", "Text",
+ CellChangeTimes->{{3.6968719546386237`*^9, 3.6968720053641396`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"CrossEntopy", "[", 
+   RowBox[{"Y__", ",", "Yp__"}], "]"}], ":=", 
+  RowBox[{"-", 
+   RowBox[{"Total", "[", 
+    RowBox[{"Yp", "*", 
+     RowBox[{"Log", "[", "Y", "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.696874713726351*^9, 3.6968747673620768`*^9}, {
+   3.696874810953225*^9, 3.696874822772911*^9}, 3.6968749265316725`*^9}],
+
+Cell["\<\
+The sum will be smaller if the score of the correct class is good\
+\>", "Text",
+ CellChangeTimes->{{3.696875233225444*^9, 3.696875260168553*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Row", "[", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+     "\"\<CEntrp[SMax[{\>\"", ",", "\[IndentingNewLine]", "sA", ",", "sB", 
+      ",", "sC", ",", "sD", ",", "\[IndentingNewLine]", 
+      "\"\<}],{0,0,0,1}] = \\n\>\"", ",", "\[IndentingNewLine]", 
+      "\"\<CEntrp[\>\"", ",", "\[IndentingNewLine]", 
+      RowBox[{"Softmax", "[", 
+       RowBox[{"{", 
+        RowBox[{"sA", ",", "sB", ",", "sC", ",", "sD"}], "}"}], "]"}], ",", 
+      "\[IndentingNewLine]", "\"\<, {0, 0, 0, 1}\>\"", ",", "\n", "       ", 
+      "\"\<] = \\n\>\"", ",", "\[IndentingNewLine]", 
+      RowBox[{"Style", "[", 
+       RowBox[{
+        RowBox[{"Framed", "[", 
+         RowBox[{"CrossEntopy", "[", 
+          RowBox[{
+           RowBox[{"Softmax", "[", 
+            RowBox[{"{", 
+             RowBox[{"sA", ",", "sB", ",", "sC", ",", "sD"}], "}"}], "]"}], 
+           ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0", ",", "0", ",", "1"}], "}"}]}], "]"}], 
+         "]"}], ",", "Bold", ",", 
+        RowBox[{"FontSize", "\[Rule]", "16"}]}], "]"}]}], 
+     "\[IndentingNewLine]", "}"}], "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"sA", ",", " ", 
+     RowBox[{"-", "10"}], ",", " ", "10"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"sB", ",", " ", 
+     RowBox[{"-", "10"}], ",", " ", "10"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"sC", ",", " ", 
+     RowBox[{"-", "10"}], ",", " ", "10"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"sD", ",", " ", 
+     RowBox[{"-", "10"}], ",", " ", "10"}], "}"}], ",", 
+   RowBox[{
+   "FrameLabel", "\[Rule]", 
+    "\"\<CrossEntropy, when sD is the score of the correct class\>\""}]}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6968752757841578`*^9, 3.696875317098901*^9}, {
+   3.6968753593952594`*^9, 3.696875410511943*^9}, {3.696875632155444*^9, 
+   3.6968756672332983`*^9}, {3.6968773686141553`*^9, 
+   3.6968774250463543`*^9}, {3.696877486293482*^9, 3.6968774937894063`*^9}, {
+   3.6968776553743944`*^9, 3.6968776935978823`*^9}, 3.696877785261712*^9, 
+   3.696877819726314*^9, 3.69687785012949*^9, {3.696878046086174*^9, 
+   3.6968780494938183`*^9}, {3.6968780983423557`*^9, 3.696878107789248*^9}, {
+   3.6968783565599155`*^9, 3.696878695666235*^9}, {3.696878736108471*^9, 
+   3.6968787749838715`*^9}, {3.696878845175525*^9, 3.6968788527004223`*^9}, {
+   3.696878887358971*^9, 3.6968789097437353`*^9}, {3.6968790726853514`*^9, 
+   3.6968790829968495`*^9}, {3.6968791201284113`*^9, 
+   3.6968791291828833`*^9}, {3.6968792063777933`*^9, 3.696879207263163*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`sA$$ = 5.75, $CellContext`sB$$ = 
+    5.200000000000001, $CellContext`sC$$ = 2.25, $CellContext`sD$$ = 9.25, 
+    Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`sA$$], -10, 10}, {
+      Hold[$CellContext`sB$$], -10, 10}, {
+      Hold[$CellContext`sC$$], -10, 10}, {
+      Hold[$CellContext`sD$$], -10, 10}}, Typeset`size$$ = {481., {57., 12.}},
+     Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = 
+    True, $CellContext`sA$7266$$ = 0, $CellContext`sB$7267$$ = 
+    0, $CellContext`sC$7268$$ = 0, $CellContext`sD$7269$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`sA$$ = -10, $CellContext`sB$$ = -10, \
+$CellContext`sC$$ = -10, $CellContext`sD$$ = -10}, "ControllerVariables" :> {
+        Hold[$CellContext`sA$$, $CellContext`sA$7266$$, 0], 
+        Hold[$CellContext`sB$$, $CellContext`sB$7267$$, 0], 
+        Hold[$CellContext`sC$$, $CellContext`sC$7268$$, 0], 
+        Hold[$CellContext`sD$$, $CellContext`sD$7269$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> 
+      Row[{"CEntrp[SMax[{", $CellContext`sA$$, $CellContext`sB$$, \
+$CellContext`sC$$, $CellContext`sD$$, "}],{0,0,0,1}] = \n", "CEntrp[", 
+         $CellContext`Softmax[{$CellContext`sA$$, $CellContext`sB$$, \
+$CellContext`sC$$, $CellContext`sD$$}], ", {0, 0, 0, 1}", "] = \n", 
+         Style[
+          Framed[
+           $CellContext`CrossEntopy[
+            $CellContext`Softmax[{$CellContext`sA$$, $CellContext`sB$$, \
+$CellContext`sC$$, $CellContext`sD$$}], {0, 0, 0, 1}]], Bold, FontSize -> 
+          16]}], "Specifications" :> {{$CellContext`sA$$, -10, 
+         10}, {$CellContext`sB$$, -10, 10}, {$CellContext`sC$$, -10, 
+         10}, {$CellContext`sD$$, -10, 10}}, 
+      "Options" :> {
+       FrameLabel -> 
+        "CrossEntropy, when sD is the score of the correct class"}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{532., {128., 135.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.696875328844023*^9, 3.6968754109891477`*^9, {3.696875643761244*^9, 
+   3.696875667739173*^9}, 3.6968773787285433`*^9, 3.696877427033137*^9, {
+   3.6968776601285324`*^9, 3.6968776958734307`*^9}, 3.6968777862358723`*^9, 
+   3.696877851263238*^9, 3.6968779445034933`*^9, 3.6968780497956233`*^9, 
+   3.6968781093495455`*^9, {3.696878470026063*^9, 3.696878508340138*^9}, {
+   3.6968785703864803`*^9, 3.6968785932862244`*^9}, 3.6968786233746247`*^9, 
+   3.6968786962277946`*^9, 3.6968787383018565`*^9, 3.696878775976304*^9, 
+   3.6968788531189957`*^9, {3.6968788959487495`*^9, 3.6968788998689413`*^9}, {
+   3.6968790770938873`*^9, 3.6968790849288197`*^9}, {3.696879123839542*^9, 
+   3.696879129634366*^9}, 3.696879208180995*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{759, 793},
+WindowMargins->{{Automatic, 641}, {267, Automatic}},
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 111, 1, 49, "Subsection"],
+Cell[694, 25, 501, 11, 30, "Input"],
+Cell[CellGroupData[{
+Cell[1220, 40, 208, 5, 30, "Input"],
+Cell[1431, 47, 316, 7, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1784, 59, 124, 2, 30, "Input"],
+Cell[1911, 63, 138, 2, 30, "Output"]
+}, Open  ]],
+Cell[2064, 68, 440, 12, 30, "Input"],
+Cell[CellGroupData[{
+Cell[2529, 84, 290, 7, 30, "Input"],
+Cell[2822, 93, 166, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3037, 102, 115, 1, 49, "Subsection"],
+Cell[3155, 105, 286, 5, 49, "Text"],
+Cell[3444, 112, 369, 9, 30, "Input"],
+Cell[3816, 123, 155, 3, 30, "Text"],
+Cell[CellGroupData[{
+Cell[3996, 130, 2628, 56, 259, "Input"],
+Cell[6627, 188, 3534, 65, 280, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
