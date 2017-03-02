@@ -4,16 +4,15 @@
 ### *Convolutional Neural Networks for Visual Recognition* ###
 #### Notes Order ####
 
-
-- Nearest Neighbours
+- Nearest Neighbors
     - Print Number
-	- Find Distance
-	- Nearest Neighbours
-	- Test Nearest Neighbours
-	- Knearest
+    - Find Distance
+    - Nearest Neighbors
+    - Test Nearest Neighbors
+    - Knearest
 
 - Linear Regression
-	- DataPeek
+    - DataPeek (Andrew's HW2 data)
     - Linear Regression wiht 2 Variables
     - 2 Variables Linear model, 3D visualization
     - Matlab 3D visualization
@@ -21,3 +20,10 @@
 - Gradient Descent
     - AbalonePeek
     - Gradient Descent
+
+- Logistic Regression
+    - Logistic on Iris Data
+    - Logistic on Titanic
+
+- Softmax (multinomial logistic)
+    - Softmax (notMNIST)
