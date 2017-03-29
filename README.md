@@ -26,4 +26,7 @@
     - Logistic on Titanic
 
 - Softmax (multinomial logistic)
-    - Softmax (notMNIST)
+    - Softmax (notMNIST, TensorFlow in action!)
+
+- Neural Networks
+    - First NN
