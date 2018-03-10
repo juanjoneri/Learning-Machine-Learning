@@ -38,7 +38,7 @@ if __name__ == '__main__':
     b = tf.Variable(tf.random_uniform([1, 3]))
 
     model = tf.nn.softmax(tf.matmul(x, W) + b)
-    cost = -tf.reduce_sum(y * tf.log(model))
+    cost = tf.nn.softmax_cross_entropy_with_logits_v2(labels=y, logits=model)
     optimize = tf.train.GradientDescentOptimizer(learning_rate=0.5).minimize(cost)
 
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
@@ -47,8 +47,7 @@ if __name__ == '__main__':
 
         sess.run(optimize, feed_dict={x: train_x, y: train_y})
 
-        print('AVG Loss: ', sess.run(cost, feed_dict={x: test_x, y: test_y})/test_size)
-
         for i in range(test_size):
             print(sess.run(tf.argmax(model, axis=1), feed_dict={x: test_x[i].reshape((1, 4))}), end=' -> ')
-            print(np.argmax(test_y[i]))
+            print(np.argmax(test_y[i]), end=': ')
+            print(sess.run(cost, feed_dict={x: test_x[i].reshape((1, 4)), y: test_y[i].reshape((1, 3))}))
